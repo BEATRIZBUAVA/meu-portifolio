@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import ProjectCard from "./ProjectCard";
-
+import ProjectCard from "../components/ProjectCard";
+import ProjectTag from "../components/ProjectTag";
 import { motion, useInView } from "framer-motion";
+import NavBar from "../components/NavBar";
 
 const projectsData = [
   {
@@ -62,7 +63,7 @@ const projectsData = [
   },
 ];
 
-export function ProjectsSection() {
+export default function ProjectsSection() {
   const [tag, setTag] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -81,11 +82,13 @@ export function ProjectsSection() {
   };
 
   return (
-    <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
+    <section id="projects" className="bg-[#0A285A] w-full min-h-screen"
+    style={{ backgroundImage: `url('/assets/texture.png')`, backgroundSize: "fit", backgroundPosition: "center" }}>
+      <NavBar />
+      <h2 className="text-center text-4xl font-bold text-white pt-20 mb-8 md:mb-12">
         My Projects
       </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6 flex-wrap">
+      <div className="text-white flex flex-row justify-center items-center gap-2  flex-wrap">
         <ProjectTag
           onClick={handleTagChange}
           name="All"
@@ -104,7 +107,7 @@ export function ProjectsSection() {
       </div>
       <ul
         ref={ref}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 p-10"
       >
         {filteredProjects.map((project, index) => (
           <motion.li

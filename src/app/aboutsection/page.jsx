@@ -1,7 +1,7 @@
 "use client";
 import React, { useTransition, useState } from "react";
-
-import TabButton from "./TabButton";
+import NavBar from "../components/NavBar";
+import TabButton from "../components/TabButton";
 
 const TAB_DATA = [
   {
@@ -40,7 +40,7 @@ const TAB_DATA = [
   },
 ];
 
-export function AboutSection() {
+export default function AboutSection() {
   const [tab, setTab] = useState("skills");
   const [, startTransition] = useTransition();
 
@@ -51,11 +51,15 @@ export function AboutSection() {
   };
 
   return (
-    <section className="text-black " id="about">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
+   
+    <section className="text-black bg-[#03441F] w-full min-h-screen flex flex-col" id="about"
+    style={{ backgroundImage: `url('/assets/texture.png')`, backgroundSize: "fit", backgroundPosition: "center" }}>
+       <NavBar/>
+       <div className=" flex-1 flex items-center justify-center p-30 xl:px-16 ">
+      <div className="grid grid-cols-1 w-250 gap-8  items-center">
         
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-4xl font-medium text-white mb-4">About Me</h2>
+        <div className="mt-4 md:mt-0 text-justify flex flex-col h-full">
+          <h2 className="text-4xl font-medium text-white mb-4">Sobre mim</h2>
           <p className="text-base lg:text-lg">
             I am a full stack web developer with a passion for creating
             interactive and responsive web applications. I have experience
@@ -64,7 +68,9 @@ export function AboutSection() {
             looking to expand my knowledge and skill set. I am a team player and
             I am excited to work with others to create amazing applications.
           </p>
-          <div className="flex flex-row justify-start mt-8">
+          </div>
+          <div className="flex flex-col h-full">
+          <div className="flex flex-row justify-start mt-8 gap-2">
             <TabButton
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}
@@ -85,8 +91,10 @@ export function AboutSection() {
             </TabButton>
           </div>
           <div className="mt-8">{TAB_DATA.find((t) => t.id === tab)?.content}</div>
+          </div>
         </div>
-      </div>
+        </div>
+      
     </section>
   );
 }

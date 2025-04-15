@@ -1,21 +1,25 @@
-import { AboutSection } from "../components/AboutSection";
+
 import HeroSection from "../components/band/HeroSection";
-import ProjectSection from "../components/ProjectSection";
+
 import {  Underlay } from "../components/band/HeroSectionText";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+
 
 
 
 export default function WhoAmI() {
     return (
-        <div>
+        <div className="font-noticia"
+        >
             <NavBar/>
             <Underlay/>
             
             <HeroSection/>
             
-           <AboutSection/>
-           <ProjectSection/>
+           
+           
+           <Footer/>
         </div>
     );
 }

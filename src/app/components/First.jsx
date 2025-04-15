@@ -6,7 +6,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 export default function FirstPage() {
   return (
-  <main className="font-mono  text-white" >
+  <main className="  text-white" >
     <Image className="-z-1"
 
       src="/assets/main-background.png"

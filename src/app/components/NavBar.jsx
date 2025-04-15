@@ -1,56 +1,56 @@
+'use client'
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 
 export default function NavBar() {
-    return (
-        <nav className="fixed mx-auto  top-0 left-0 right-0 z-10 bg-[#87CE83] bg-opacity-100">
-        <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto py-2 p-8 md:p-12 lg:p-20">
+  const pathname = usePathname();
+
+  const tabs = [
+    { name: "Home", href: "/whoami" },
+    { name: "Sobre mim", href: "/aboutsection" },
+    { name: "Projetos", href: "/projectsection" },
+    { name: "Contato", href: "/emailsection" },
+    
+  ];
+      
+  
+  return (
+    <nav className="fixed w-full z-10 bg-[#759EB8] !font-noticia bg-opacity-100 "
+    style={{ backgroundImage: `url('/assets/texture.png')`, backgroundSize: "fit", backgroundPosition: "center" }}>
+    <div className="flex justify-start  px-4 pt-2 "
+    
+    >
+      {tabs.map((tab) => {
+        const isActive = pathname === tab.href;
+        const baseStyle =
+          "px-5 py-2 text-sm  md:text-base rounded-t-lg  w-50 transition-colors";
+        const activeStyle = " !text-[#FCF6E4] z-10";
+        const tabColor =
+          tab.name === "Home"
+            ? "bg-[#759EB8] !text-[#FCF6E4] hover:bg-green-700 "
+            : tab.name === "Sobre mim"
+            ? "bg-[#03441F] !text-[#FCF6E4] hover:bg-green-700 "
+            : tab.name === "Projetos"
+            ? "bg-[#0A285A] !text-[#FCF6E4] hover:bg-blue-700 "
+            : tab.name === "Contato"
+            ? "bg-[#051116] !text-[#FCF6E4] hover:bg-red-700 "
+            : "bg-[#4F3824] !text-[#FCF6E4] hover:bg-neutral-700 ";
+
+        return (
           <Link
-            href={"/"}
-            className="text-2l md:text-3xl text-white font-normal"
+            key={tab.name}
+            href={tab.href}
+            className={`${baseStyle} ${tabColor} ${isActive ? activeStyle : ""}`}
+            style={{ backgroundImage: `url('/assets/texture.png')`, backgroundSize: "cover", backgroundPosition: "center" }}
           >
-            @beatrizbuava
+            {tab.name}
           </Link>
-          <div
-            className="menu hidden md:block md:w-auto"
-            id="navbar"
-          >
-            <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
-              <li key="sobremim">
-                <Link
-                  href="/sobremim"
-                  className="hover:text-slate-200"
-                >
-                  Sobre mim
-                </Link>
-              </li>
-              <li key="projects">
-                <Link
-                  href="#habilidades"
-                  className="hover:text-slate-200"
-                >
-                    Habilidades
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#projetos"
-                  className="hover:text-red-600"
-                >
-                 Projetos
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#contato"
-                  className="hover:text-slate-200"
-                >
-                  Contato
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+        );
+      })}
+    </div>
+  </nav>
     );
   };
                                     

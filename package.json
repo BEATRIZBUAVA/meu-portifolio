@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@radix-ui/react-tooltip": "^1.2.0",
     "@react-three/drei": "^9.112.0",
     "@react-three/fiber": "^9.1.1",
     "@react-three/rapier": "^1.4.0",

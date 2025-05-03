@@ -35,7 +35,7 @@ export default function NavBar() {
                 : tab.name === "Projetos"
                   ? "bg-[#BE7C4D] !text-[#FCF6E4] border border-white border-b-0 hover:bg-[#A7693C] "
                   : tab.name === "Contato"
-                    ? "bg-[#A30000] !text-[#FCF6E4] border border-white border-b-0 hover:bg-[#950000] "
+                    ? "bg-[#134611] !text-[#FCF6E4] border border-white border-b-0 hover:bg-[#950000] "
                     : "bg-[#4F3824] !text-[#FCF6E4] hover:bg-neutral-700 ";
 
           return (

@@ -6,17 +6,16 @@ import { TypeAnimation } from 'react-type-animation';
 
 export default function FirstPage() {
   return (
-    <main className="  text-white" >
-      <Image className="-z-1"
+    <main className="relative w-full min-h-screen text-white">
+  <Image
+    className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+    src="/assets/main_background.png"
+    alt="Fundo"
+    fill
+    priority
+  />
 
-        src="/assets/main-background.png"
-        alt="Fundo"
-        fill={true}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        style={{ objectFit: 'cover', objectPosition: 'center' }}
-
-      />
-      <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col items-center justify-start h-screen pt-45">
         <TypeAnimation
           sequence={[
             'Olá mundo!', 1000,
@@ -28,7 +27,7 @@ export default function FirstPage() {
           style={{ fontSize: '2em', display: 'inline-block' }}
         />
 
-        <div className="relative group flex flex-col items-center justify-center w-80 h-80">
+        <div className="relative group flex flex-col items-center justify-center w-60 h-60 pt-15">
           {/* Link por cima da pasta */}
           <Link
             href="/whoami"
@@ -45,7 +44,7 @@ export default function FirstPage() {
           </Link>
 
           {/* Pasta visual */}
-          <div className="file relative w-60 h-40 origin-bottom z-10 transition-transform duration-300 ease-in-out group-hover:scale-105">
+          <div className="file relative w-60 h-40  origin-bottom z-10 transition-transform duration-300 ease-in-out group-hover:scale-105">
             {/* Aqui você coloca as divs da pasta como já tinha feito */}
 
             <div

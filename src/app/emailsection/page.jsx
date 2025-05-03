@@ -30,13 +30,14 @@ function ContactSection() {
   }
 
   return (
-    <section id="contact" className="text-white w-full min-h-screen  bg-[#051116]"
-    style={{ backgroundImage: `url('/assets/texture.png')`, backgroundSize: "fit", backgroundPosition: "center" }}>
+    <section id="contact" className=" w-full min-h-screen  bg-[#134611]"
+    >
       <NavBar />
-      <div className="flex flex-col items-center justify-center ">
-      <h2 className="text-3xl  text-center mb-6 pt-20">Contato</h2>
-      <div className="flex flex-col items-center justify-center w-full">
-      <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4  w-full max-w-md sm:max-w-lg text-[#051116]">
+      <div className="flex flex-col items-center justify-center  ">
+   
+      <div className="flex flex-col items-center justify-center w-150 h-150 bg-[#FAFAEF]  rounded-[10px] mt-20">
+         <h2 className="text-3xl text-bold text-center text-[#051116] pb-10 ">Contato</h2>
+         <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4  w-full max-w-md sm:max-w-lg text-[#051116]">
         <input
           type="text"
           name="user_name"
@@ -60,12 +61,12 @@ function ContactSection() {
         />
         <button
           type="submit"
-          className="bg-[#87CE83] hover:bg-[#67B063] rounded p-2 text-[#051116] font-semibold"
+          className="bg-[#87CE83] hover:bg-[#67B063] border-1 rounded p-2 text-[#051116] font-semibold shadow-[0px_0.5px_0.5px_rgba(16,86,82,0.75),0px_1px_0.5px_rgba(16,86,82,0.75)]"
         >
           Enviar
         </button>
         {success && (
-          <p className="text-green-400 text-sm mt-2">Mensagem enviada com sucesso!</p>
+          <p className="text-green-400 text-sm mt-2  ">Mensagem enviada com sucesso!</p>
         )}
       </form>
       </div>

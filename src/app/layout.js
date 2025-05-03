@@ -1,7 +1,7 @@
 // app/layout.js
 import { Noticia_Text } from "next/font/google";
 import "./globals.css";
-import PageWrapper from "./PageWrapper";
+
 
 const noticia = Noticia_Text({
   variable: "--font-noticia",
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${noticia.variable} font-noticia`} style={{ perspective: '1000px' }}>
-        <PageWrapper>{children}</PageWrapper>
+        {children}
       </body>
     </html>
   );

@@ -20,3 +20,37 @@ body {
   color: var(--foreground);
   font-family: "Noticia Text", serif;
 }
+
+@layer utilities {
+  .shadow-lines::before,
+  .shadow-lines::after {
+    position: absolute;
+    content: "";
+    bottom: 10px;
+    width: 40%;
+    height: 10px;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+
+  .shadow-lines::before {
+    left: 15px;
+    transform: skew(-5deg) rotate(-5deg);
+  }
+
+  .shadow-lines::after {
+    right: 15px;
+    transform: skew(5deg) rotate(5deg);
+  }
+
+  .hover\:shadow-lines-hover:hover::before,
+  .hover\:shadow-lines-hover:hover::after {
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+  }
+
+  .bg-lined {
+    background-image: linear-gradient(#ffffff 1.5rem, #ccc 1.6rem);
+    background-size: 100% 1.6rem;
+  }
+}

@@ -54,3 +54,19 @@ body {
     background-size: 100% 1.6rem;
   }
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.float {
+  animation: float 2s infinite linear;
+}

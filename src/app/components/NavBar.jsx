@@ -1,56 +1,64 @@
 'use client'
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Clock from './clock';
 
 export default function NavBar() {
-  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const [time, setTime] = useState(new Date());
 
-  const tabs = [
-    { name: "Home", href: "/whoami" },
-    { name: "Sobre mim", href: "/aboutsection" },
-    { name: "Projetos", href: "/projectsection" },
-    { name: "Contato", href: "/emailsection" },
+  
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+ useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
 
-  ];
-
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <nav className="fixed w-full z-10 bg-[#FFFAED] !font-noticia bg-opacity-100 "
-    >
-      <div className="flex justify-end px-4 pt-2 "
+    <nav className="fixed w-full z-10 bg-[#BEE7E8] font-noticia bg-opacity-100 flex justify-between">
+     
 
-      >
-        {tabs.map((tab) => {
-          const isActive = pathname === tab.href;
-          const baseStyle =
-            "px-5 py-2 text-sm  md:text-base rounded-t-lg  w-50 transition-colors";
-          const activeStyle = " !text-[#FCF6E4] z-10";
-          const tabColor =
-            tab.name === "Home"
-              ? "bg-[#7897A6] !text-[#FCF6E4] s border border-white border-b-0 hover:bg-[#436E84] "
-              : tab.name === "Sobre mim"
-                ? "bg-[#86AC6F] !text-[#FCF6E4] border border-white border-b-0 hover:bg-[#6D9158] "
-                : tab.name === "Projetos"
-                  ? "bg-[#BE7C4D] !text-[#FCF6E4] border border-white border-b-0 hover:bg-[#A7693C] "
-                  : tab.name === "Contato"
-                    ? "bg-[#134611] !text-[#FCF6E4] border border-white border-b-0 hover:bg-[#950000] "
-                    : "bg-[#4F3824] !text-[#FCF6E4] hover:bg-neutral-700 ";
+      <div className="flex justify-start ml-5 pt-2" ref={menuRef}>
+        <Link href="/whoami" className="w-10 h-10 rounded-full border-3 border-black flex items-center justify-center text-lg font-bold ">
+  b.
+</Link>
 
-          return (
-            <Link
-              key={tab.name}
-              href={tab.href}
-              className={`${baseStyle} ${tabColor} ${isActive ? activeStyle : ""}`}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-gray-700 text-lg px-5 py-2 relative"
+        >
+          Menu
+        </button>
 
-            >
-              {tab.name}
-            </Link>
-          );
-        })}
+        {isOpen && (
+          <div className="absolute top-full left-4 mt-2 p-3 rounded-lg bg-white shadow-md border">
+            <ul className="space-y-2">
+              <li>
+                <Link href="/aboutsection" onClick={() => setIsOpen(false)}>Sobre mim</Link>
+              </li>
+              <li>
+                <Link href="/projectsection" onClick={() => setIsOpen(false)}>Projetos</Link>
+              </li>
+              <li>
+                <Link href="/emailsection" onClick={() => setIsOpen(false)}>Contato</Link>
+              </li>
+            </ul>
+          </div>
+        )}
+        <Clock time={time} />
       </div>
     </nav>
   );
-};
-
+}

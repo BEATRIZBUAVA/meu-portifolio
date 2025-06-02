@@ -1,5 +1,6 @@
 'use client'
 import { TypeAnimation } from "react-type-animation";
+import React from "react"
 
 export function Underlay() {
   return (

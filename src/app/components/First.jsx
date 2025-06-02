@@ -1,11 +1,8 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import TileProgressBar from './progressbar'
-import HeroSection from "../components/band/HeroSection";
-import {  Underlay } from "../components/band/HeroSectionText";
-import NavBar from "../components/NavBar";
+import Home from "./Home";
 import Footer from "../components/Footer";;
 
 export default function FirstPage() {
@@ -31,16 +28,16 @@ export default function FirstPage() {
         />
 
         <div className="flex flex-col items-center justify-start pt-44 h-screen relative group">
-          
-          
-            <div className="flex flex-col items-center gap-2 mb-5 cursor-pointer p-4 transition-all">
-              <div className="animate-float">
-                <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
-                <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
-              </div>
-              <span className="text-sm text-white mt-2">getting files ready...</span>
+
+
+          <div className="flex flex-col items-center gap-2 mb-5 cursor-pointer p-4 transition-all">
+            <div className="animate-float">
+              <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
+              <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
             </div>
-          
+            <span className="text-sm text-white mt-2">getting files ready...</span>
+          </div>
+
           <TileProgressBar />
         </div>
       </main>
@@ -49,9 +46,7 @@ export default function FirstPage() {
 
   return (
     <div className="font-noticia">
-      <NavBar />
-      <Underlay />
-      <HeroSection />
+      <Home />
       <Footer />
     </div>
   );

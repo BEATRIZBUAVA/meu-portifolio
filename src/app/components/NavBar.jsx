@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Clock from './clock';
 
@@ -8,7 +8,7 @@ export default function NavBar() {
   const menuRef = useRef(null);
   const [time, setTime] = useState(new Date());
 
-  
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -18,7 +18,7 @@ export default function NavBar() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
- useEffect(() => {
+  useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
     }, 1000);
@@ -27,13 +27,13 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav className="fixed w-full z-10 bg-[#BEE7E8] font-noticia bg-opacity-100 flex justify-between">
-     
+    <nav className="fixed w-full z-10 bg-[#BEE7E8] font-noticia bg-opacity-100 flex ">
 
-      <div className="flex justify-start ml-5 pt-2" ref={menuRef}>
+
+      <div className="flex  ml-5 pt-2" ref={menuRef}>
         <Link href="/whoami" className="w-10 h-10 rounded-full border-3 border-black flex items-center justify-center text-lg font-bold ">
-  b.
-</Link>
+          b.
+        </Link>
 
         <button
           onClick={() => setIsOpen(!isOpen)}

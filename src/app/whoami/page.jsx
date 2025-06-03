@@ -12,14 +12,14 @@ export default function WhoAmI() {
     return (
         <div className="font-noticia"
         >
-            <NavBar />
+
             <Underlay />
 
             <HeroSection />
 
 
 
-            <Footer />
+
         </div>
     );
 }

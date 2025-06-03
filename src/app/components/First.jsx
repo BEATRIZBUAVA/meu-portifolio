@@ -20,7 +20,7 @@ export default function FirstPage() {
       </div>
       <span className="sr-only">Ver projeto</span>
       <div className="flex flex-col items-center gap-2 mb-5 cursor-pointer p-4 transition-all">
-        <div className="animate-float">
+        <div >
           <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
           <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
         </div>

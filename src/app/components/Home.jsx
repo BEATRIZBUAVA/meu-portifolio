@@ -1,52 +1,69 @@
 import Link from "next/link";
 import NavBar from "../components/NavBar";
-import React from "react";
+import React, { useState } from "react";
+import Cloud from "../components/Cloud";
+import WhoAmI from "../whoami/page";
+import FolderIcon from "../components/FolderIcon";
+import DesktopWindow from "../components/DesktopWindow"; // Notei que no seu import estava "DekstopWindow" (provável erro de digitação)
 
 export default function Home() {
+    const [isWindowOpen, setIsWindowOpen] = useState(false);
+
+    const handleOpenWindow = () => {
+        if (!isWindowOpen) {
+            setIsWindowOpen(true);
+        }
+    };
+
+    const handleCloseWindow = () => {
+        setIsWindowOpen(false);
+    };
+
     return (
         <div className="font-noticia">
             <NavBar />
-            <main className="w-full min-h-screen bg-green-200">
-                <div className="flex flex-col items-start p-10 pt-40"  >
-                    <div className="flex flex-col items-center gap-20  cursor-pointer p-4 transition-all">
-                        <Link href="/whoami" >
-                            <div className="hidden sm:block absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-sm text-white bg-black rounded shadow-lg opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 pointer-events-none z-50">
-                                Ver projeto
-                            </div>
+            <main className="relative h-screen w-full overflow-hidden">
+                {/* FUNDO */}
+                <div className="absolute top-0 left-0 w-full h-full z-[-1]">
+                    {/* Céu */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-sky-400 to-sky-200"></div>
 
-                            <span className="sr-only">Ver projeto</span>
-                            <div className="animate-float">
-                                <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
-                                <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
-                            </div>
-                        </Link>
-                        <Link href="/projectsection" >
-                            <div className="hidden sm:block absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-sm text-white bg-black rounded shadow-lg opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 pointer-events-none z-50">
-                                Ver projeto
-                            </div>
-
-                            {/* Um conteúdo clicável real (ex: um span invisível pra ocupar espaço) */}
-                            <span className="sr-only">Ver projeto</span>
-                            <div className="animate-float">
-                                <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
-                                <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
-                            </div>
-                        </Link>
-                        <Link href="/emailsection" >
-                            <div className="hidden sm:block absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-sm text-white bg-black rounded shadow-lg opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 pointer-events-none z-50">
-                                Ver projeto
-                            </div>
-
-                            {/* Um conteúdo clicável real (ex: um span invisível pra ocupar espaço) */}
-                            <span className="sr-only">Ver projeto</span>
-                            <div className="animate-float">
-                                <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
-                                <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
-                            </div>
-                        </Link>
-
+                    {/* Nuvens */}
+                    <div className="absolute top-20 w-[200%] h-40 animate-cloudMove flex space-x-40 opacity-80">
+                        <Cloud />
+                        <Cloud />
+                        <Cloud />
+                        <Cloud />
                     </div>
+
+                    {/* Montanha */}
+                    <div className="absolute bottom-0 w-full h-80 bg-gradient-to-t from-green-600 to-green-400 rounded-t-[100%]" />
                 </div>
+
+                <div className="flex flex-col h-full w-screen items-start justify-center gap-20 cursor-pointer pt-10 pl-15 transition-all">
+                    <FolderIcon onClick={handleOpenWindow} />
+
+
+                    <Link href="/projectsection">
+                        <div>
+                            <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
+                            <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
+                        </div>
+                    </Link>
+
+                    <Link href="/emailsection">
+                        <div>
+                            <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
+                            <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
+                        </div>
+                    </Link>
+                </div>
+
+                {isWindowOpen && (
+                    <DesktopWindow onClose={handleCloseWindow}>
+                        <WhoAmI />
+                    </DesktopWindow>
+                )}
             </main>
         </div>
     );

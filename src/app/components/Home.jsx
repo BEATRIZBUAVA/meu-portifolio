@@ -10,7 +10,7 @@ import FolderIcon from "../components/FolderIcon";
 import DesktopWindow from "../components/DesktopWindow";
 
 export default function Home() {
-    const [windowContent, setWindowContent] = useState < "whoami" | "projects" | "email" | null > (null);
+    const [windowContent, setWindowContent] = useState(null);
 
     const handleOpenWindow = (content) => {
         setWindowContent(content);

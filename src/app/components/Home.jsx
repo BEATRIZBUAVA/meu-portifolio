@@ -1,67 +1,56 @@
-import Link from "next/link";
+
 import NavBar from "../components/NavBar";
 import React, { useState } from "react";
-import Cloud from "../components/Cloud";
+import CloudAnimation from "./CloudAnimation";
+import Mountain from "./Mountain";
 import WhoAmI from "../whoami/page";
+import ProjectSection from "../projectsection/page";
+import EmailSection from "../emailsection/page";
 import FolderIcon from "../components/FolderIcon";
-import DesktopWindow from "../components/DesktopWindow"; // Notei que no seu import estava "DekstopWindow" (provável erro de digitação)
+import DesktopWindow from "../components/DesktopWindow";
 
 export default function Home() {
-    const [isWindowOpen, setIsWindowOpen] = useState(false);
+    const [windowContent, setWindowContent] = useState < "whoami" | "projects" | "email" | null > (null);
 
-    const handleOpenWindow = () => {
-        if (!isWindowOpen) {
-            setIsWindowOpen(true);
-        }
+    const handleOpenWindow = (content) => {
+        setWindowContent(content);
     };
 
     const handleCloseWindow = () => {
-        setIsWindowOpen(false);
+        setWindowContent(null);
     };
 
     return (
         <div className="font-noticia">
             <NavBar />
-            <main className="relative h-screen w-full overflow-hidden">
-                {/* FUNDO */}
-                <div className="absolute top-0 left-0 w-full h-full z-[-1]">
-                    {/* Céu */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-sky-400 to-sky-200"></div>
+            <main className="relative w-full h-screen bg-gradient-to-b from-sky-300 to-sky-100 overflow-hidden">
 
-                    {/* Nuvens */}
-                    <div className="absolute top-20 w-[200%] h-40 animate-cloudMove flex space-x-40 opacity-80">
-                        <Cloud />
-                        <Cloud />
-                        <Cloud />
-                        <Cloud />
-                    </div>
+                <div className="z-0">
+                    <CloudAnimation />
 
-                    {/* Montanha */}
-                    <div className="absolute bottom-0 w-full h-80 bg-gradient-to-t from-green-600 to-green-400 rounded-t-[100%]" />
+                    <Mountain
+                        fill="#81C784"
+                        height={160}
+                        width={850}
+                        left="0"
+                        bottom="0"
+                        opacity={0.8}
+                    />
                 </div>
 
-                <div className="flex flex-col h-full w-screen items-start justify-center gap-20 cursor-pointer pt-10 pl-15 transition-all">
-                    <FolderIcon onClick={handleOpenWindow} />
-
-
-                    <Link href="/projectsection">
-                        <div>
-                            <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
-                            <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
-                        </div>
-                    </Link>
-
-                    <Link href="/emailsection">
-                        <div>
-                            <div className="bg-[#FF8F56] w-[60px] h-[12px] rounded-tr-[10px]"></div>
-                            <div className="bg-[#FFCE63] w-[100px] h-[70px] shadow-[5px_5px_0_0_#283149] rounded-tr-[8px]"></div>
-                        </div>
-                    </Link>
+                <div className="flex flex-col h-full w-screen items-start justify-center gap-20 cursor-pointer pt-10 pl-15 transition-all z-10">
+                    <FolderIcon onClick={() => handleOpenWindow("whoami")} />
+                    <FolderIcon onClick={() => handleOpenWindow("projects")} />
+                    <FolderIcon onClick={() => handleOpenWindow("email")} />
                 </div>
 
-                {isWindowOpen && (
+
+
+                {windowContent && (
                     <DesktopWindow onClose={handleCloseWindow}>
-                        <WhoAmI />
+                        {windowContent === "whoami" && <WhoAmI />}
+                        {windowContent === "projects" && <ProjectSection />}
+                        {windowContent === "email" && <EmailSection />}
                     </DesktopWindow>
                 )}
             </main>

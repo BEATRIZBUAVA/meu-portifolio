@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 
 
@@ -22,6 +21,7 @@ body {
 }
 
 @layer utilities {
+
   .shadow-lines::before,
   .shadow-lines::after {
     position: absolute;
@@ -55,18 +55,16 @@ body {
   }
 }
 
-@keyframes float {
+@keyframes moveCloud {
   0% {
-    transform: translateY(0);
+    transform: translateX(-100%);
   }
-  50% {
-    transform: translateY(-25px);
-  }
+
   100% {
-    transform: translateY(0);
+    transform: translateX(110vw);
   }
 }
 
-.float {
-  animation: float 2s infinite linear;
+.animate-cloud {
+  animation: moveCloud linear infinite;
 }

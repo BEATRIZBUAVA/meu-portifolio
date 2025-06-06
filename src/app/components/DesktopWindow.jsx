@@ -12,7 +12,8 @@ export default function DesktopWindow({ onClose, children }) {
                     position: "absolute",
                     top: "100px",
                     left: "100px",
-                    width: 400,
+                    width: 1000,
+                    height: 700,
                     backgroundColor: "white",
                     border: "1px solid #333",
                     borderRadius: 8,
@@ -24,7 +25,7 @@ export default function DesktopWindow({ onClose, children }) {
                 <div
                     className="handle"
                     style={{
-                        padding: "10px",
+
                         backgroundColor: "#333",
                         color: "white",
                         cursor: "grab",
@@ -50,7 +51,11 @@ export default function DesktopWindow({ onClose, children }) {
                         ✕
                     </button>
                 </div>
-                <div style={{ padding: 20 }}>{children}</div>
+                <div style={{
+                    height: "calc(100% - 40px)",
+                    overflow: "auto",
+                    boxSizing: "border-box"
+                }}>{children}</div>
             </div>
         </Draggable>
     );

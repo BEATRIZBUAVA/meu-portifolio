@@ -1,17 +1,15 @@
 
 import HeroSection from "../components/band/HeroSection";
-
+import React from "react";
 import { Underlay } from "../components/band/Underlay";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
+
 
 
 
 
 export default function WhoAmI() {
     return (
-        <div className="font-noticia"
-        >
+        <div className="font-noticia overflow-auto" >
 
             <Underlay />
 

@@ -82,9 +82,9 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="bg-[#BE7C4D] w-full min-h-screen"
+    <section id="projects" className=" w-full min-h-screen"
     >
-      <NavBar />
+
       <h2 className="text-center text-4xl font-bold text-white pt-20 mb-8 md:mb-12">
         My Projects
       </h2>

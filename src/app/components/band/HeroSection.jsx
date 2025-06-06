@@ -15,8 +15,12 @@ const TEXTURE_PATH = '/assets/textura-azul.png';
 export default function HeroSection() {
 
   return (
-    <div className="responsive-wrapper">
-      <Canvas camera={{ position: [0, 0, 13], fov: 25 }}
+    <div className="responsive-wrapper w-100% h-100% overflow-auto">
+      <Canvas camera={{ position: [0, 0, 13], fov: 25 }} style={{
+        width: '100%',
+        height: '100%',
+        display: 'block'
+      }}
       >
         <ambientLight intensity={Math.PI} />
         <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
@@ -90,7 +94,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 
   return (
     <>
-      <group position={[2, 4, 0]}>
+      <group position={[2, 5, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />

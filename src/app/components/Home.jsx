@@ -23,9 +23,9 @@ export default function Home() {
     return (
         <div className="font-noticia">
             <NavBar />
-            <main className="relative w-full h-screen bg-gradient-to-b from-sky-300 to-sky-100 overflow-hidden">
+            <main className="relative w-full h-screen bg-gradient-to-b from-sky-300 to-sky-100 z-0 overflow-hidden">
 
-                <div className="z-0">
+                <div className="">
                     <CloudAnimation />
 
                     <Mountain
@@ -35,13 +35,14 @@ export default function Home() {
                         left="0"
                         bottom="0"
                         opacity={0.8}
+                        zIndex={-10}
                     />
                 </div>
 
-                <div className="flex flex-col h-full w-screen items-start justify-center gap-20 cursor-pointer pt-10 pl-15 transition-all z-10">
-                    <FolderIcon onClick={() => handleOpenWindow("whoami")} />
-                    <FolderIcon onClick={() => handleOpenWindow("projects")} />
-                    <FolderIcon onClick={() => handleOpenWindow("email")} />
+                <div className="flex flex-col h-full w-screen items-start justify-center gap-20 cursor-pointer pt-10 pl-15 transition-all ">
+                    <FolderIcon onClick={() => handleOpenWindow("whoami")} className="z-1" />
+                    <FolderIcon onClick={() => handleOpenWindow("projects")} className="z-1" />
+                    <FolderIcon onClick={() => handleOpenWindow("email")} className="z-1" />
                 </div>
 
 

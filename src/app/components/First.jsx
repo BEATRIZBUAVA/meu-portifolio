@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TileProgressBar from './progressbar'
 import Home from "./Home";
-import Footer from "../components/Footer";;
+
 
 export default function FirstPage() {
   const [showLoading, setShowLoading] = useState(true);
@@ -70,9 +70,9 @@ export default function FirstPage() {
 
 
   return (
-    <div className="font-noticia">
+    <div className="font-noticia h-screen overflow-hidden">
       <Home />
-      <Footer />
+
     </div>
   );
 }

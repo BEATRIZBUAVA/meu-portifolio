@@ -10,8 +10,8 @@ function Mountain({
 }) {
     return (
         <svg
-            className="absolute w-full h-[40vh]"
-            style={{ bottom, left, opacity }}
+            className="absolute w-full h-[40vh] "
+            style={{ bottom, left, opacity, zIndex: -1 }}
             viewBox="0 0 800 900"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"

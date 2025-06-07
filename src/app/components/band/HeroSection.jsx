@@ -15,7 +15,7 @@ const TEXTURE_PATH = '/assets/textura-azul.png';
 export default function HeroSection() {
 
   return (
-    <div className="responsive-wrapper w-100% h-100% overflow-auto">
+    <div className="responsive-wrapper w-100% h-full overflow-hidden">
       <Canvas camera={{ position: [0, 0, 13], fov: 25 }} style={{
         width: '100%',
         height: '100%',

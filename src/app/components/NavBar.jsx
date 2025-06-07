@@ -27,7 +27,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav className="fixed w-full z-10 bg-[#BEE7E8] font-noticia bg-opacity-100 flex ">
+    <nav className="fixed bottom-0  w-full z-10 bg-[#333] font-noticia bg-opacity-100 flex ">
 
 
       <div className="flex  ml-5 pt-2" ref={menuRef}>
@@ -37,7 +37,7 @@ export default function NavBar() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-gray-700 text-lg px-5 py-2 relative"
+          className="text-white text-lg px-5 py-2 relative"
         >
           Menu
         </button>

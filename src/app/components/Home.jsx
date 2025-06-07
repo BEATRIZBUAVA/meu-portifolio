@@ -1,4 +1,3 @@
-
 import NavBar from "../components/NavBar";
 import React, { useState } from "react";
 import CloudAnimation from "./CloudAnimation";
@@ -10,14 +9,67 @@ import FolderIcon from "../components/FolderIcon";
 import DesktopWindow from "../components/DesktopWindow";
 
 export default function Home() {
-    const [windowContent, setWindowContent] = useState(null);
+    // Estado para controlar quais janelas estão abertas
+    const [openWindows, setOpenWindows] = useState({
+        whoami: false,
+        projects: false,
+        email: false
+    });
 
-    const handleOpenWindow = (content) => {
-        setWindowContent(content);
+    // Estado para controlar z-index das janelas
+    const [windowZIndex, setWindowZIndex] = useState({
+        whoami: 1000,
+        projects: 1000,
+        email: 1000
+    });
+
+    // Contador para z-index crescente
+    const [maxZIndex, setMaxZIndex] = useState(1000);
+
+    // Função para abrir/fechar janela individual
+    const toggleWindow = (windowType) => {
+        setOpenWindows(prev => {
+            const isOpening = !prev[windowType];
+
+            // Se está abrindo a janela, dar z-index maior
+            if (isOpening) {
+                const newZIndex = maxZIndex + 1;
+                setWindowZIndex(prevZ => ({
+                    ...prevZ,
+                    [windowType]: newZIndex
+                }));
+                setMaxZIndex(newZIndex);
+            }
+
+            return {
+                ...prev,
+                [windowType]: isOpening
+            };
+        });
     };
 
-    const handleCloseWindow = () => {
-        setWindowContent(null);
+    // Função para abrir todas as janelas de uma vez
+
+
+
+
+
+    // Função para focar janela (trazer para frente)
+    const focusWindow = (windowType) => {
+        const newZIndex = maxZIndex + 1;
+        setWindowZIndex(prev => ({
+            ...prev,
+            [windowType]: newZIndex
+        }));
+        setMaxZIndex(newZIndex);
+    };
+
+    // Função para fechar janela específica
+    const closeWindow = (windowType) => {
+        setOpenWindows(prev => ({
+            ...prev,
+            [windowType]: false
+        }));
     };
 
     return (
@@ -39,19 +91,60 @@ export default function Home() {
                     />
                 </div>
 
-                <div className="flex flex-col h-full w-screen items-start justify-center gap-20 cursor-pointer pt-10 pl-15 transition-all ">
-                    <FolderIcon onClick={() => handleOpenWindow("whoami")} className="z-1" />
-                    <FolderIcon onClick={() => handleOpenWindow("projects")} className="z-1" />
-                    <FolderIcon onClick={() => handleOpenWindow("email")} className="z-1" />
+
+
+
+                <div className="flex flex-col h-full w-screen items-start justify-center gap-20 cursor-pointer pt-10 pl-15 transition-all">
+                    <FolderIcon
+                        onClick={() => toggleWindow("whoami")}
+                        className={`z-1 ${openWindows.whoami ? 'opacity-80 scale-95' : ''} transition-all`}
+                    />
+                    <FolderIcon
+                        onClick={() => toggleWindow("projects")}
+                        className={`z-1 ${openWindows.projects ? 'opacity-80 scale-95' : ''} transition-all`}
+                    />
+                    <FolderIcon
+                        onClick={() => toggleWindow("email")}
+                        className={`z-1 ${openWindows.email ? 'opacity-80 scale-95' : ''} transition-all`}
+                    />
                 </div>
 
+                {/* Renderizar janela WhoAmI se estiver aberta */}
+                {openWindows.whoami && (
+                    <DesktopWindow
+                        onClose={() => closeWindow("whoami")}
+                        onFocus={() => focusWindow("whoami")}
+                        offsetIndex={0}
+                        title="Quem Sou Eu"
+                        zIndex={windowZIndex.whoami}
+                    >
+                        <WhoAmI />
+                    </DesktopWindow>
+                )}
 
+                {/* Renderizar janela Projects se estiver aberta */}
+                {openWindows.projects && (
+                    <DesktopWindow
+                        onClose={() => closeWindow("projects")}
+                        onFocus={() => focusWindow("projects")}
+                        offsetIndex={1}
+                        title="Meus Projetos"
+                        zIndex={windowZIndex.projects}
+                    >
+                        <ProjectSection />
+                    </DesktopWindow>
+                )}
 
-                {windowContent && (
-                    <DesktopWindow onClose={handleCloseWindow}>
-                        {windowContent === "whoami" && <WhoAmI />}
-                        {windowContent === "projects" && <ProjectSection />}
-                        {windowContent === "email" && <EmailSection />}
+                {/* Renderizar janela Email se estiver aberta */}
+                {openWindows.email && (
+                    <DesktopWindow
+                        onClose={() => closeWindow("email")}
+                        onFocus={() => focusWindow("email")}
+                        offsetIndex={2}
+                        title="Contato"
+                        zIndex={windowZIndex.email}
+                    >
+                        <EmailSection />
                     </DesktopWindow>
                 )}
             </main>

@@ -9,7 +9,7 @@ import { Underlay } from "../components/band/Underlay";
 
 export default function WhoAmI() {
     return (
-        <div className="font-noticia overflow-auto" >
+        <div className="font-noticia overflow-hidden" >
 
             <Underlay />
 

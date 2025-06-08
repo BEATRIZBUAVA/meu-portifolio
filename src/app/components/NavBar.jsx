@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Clock from './clock';
+import ThemeToggle from './ThemeToggle';
+
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +29,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav className="fixed bottom-0  w-full z-10 bg-[#333] font-noticia bg-opacity-100 flex ">
+    <nav className="fixed bottom-0  w-full z-10 dark:bg-[#333] bg-amber-50 font-noticia bg-opacity-100 flex overflow-hidden">
 
 
       <div className="flex  ml-5 pt-2" ref={menuRef}>
@@ -58,6 +60,7 @@ export default function NavBar() {
           </div>
         )}
         <Clock time={time} />
+        <ThemeToggle />
       </div>
     </nav>
   );

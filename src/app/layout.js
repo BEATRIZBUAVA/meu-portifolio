@@ -1,6 +1,7 @@
-// app/layout.js
+import React from "react";
 import { Noticia_Text } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 
 const noticia = Noticia_Text({
@@ -16,10 +17,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+
       <body className={`${noticia.variable} font-noticia`} style={{ perspective: '1000px' }}>
-        {children}
+        <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+          {children}
+
+        </ThemeProvider>
       </body>
+
     </html>
   );
 }

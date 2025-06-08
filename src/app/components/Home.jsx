@@ -1,3 +1,4 @@
+'use client';
 import NavBar from "../components/NavBar";
 import React, { useState } from "react";
 import CloudAnimation from "./CloudAnimation";
@@ -7,6 +8,7 @@ import ProjectSection from "../projectsection/page";
 import EmailSection from "../emailsection/page";
 import FolderIcon from "../components/FolderIcon";
 import DesktopWindow from "../components/DesktopWindow";
+
 
 export default function Home() {
     // Estado para controlar quais janelas estão abertas
@@ -48,13 +50,7 @@ export default function Home() {
         });
     };
 
-    // Função para abrir todas as janelas de uma vez
 
-
-
-
-
-    // Função para focar janela (trazer para frente)
     const focusWindow = (windowType) => {
         const newZIndex = maxZIndex + 1;
         setWindowZIndex(prev => ({
@@ -64,7 +60,6 @@ export default function Home() {
         setMaxZIndex(newZIndex);
     };
 
-    // Função para fechar janela específica
     const closeWindow = (windowType) => {
         setOpenWindows(prev => ({
             ...prev,
@@ -72,10 +67,11 @@ export default function Home() {
         }));
     };
 
+
     return (
         <div className="font-noticia">
             <NavBar />
-            <main className="relative w-full h-screen bg-gradient-to-b from-sky-300 to-sky-100 z-0 overflow-hidden">
+            <main className="relative w-full h-screen bg-gradient-to-b from-sky-300 to-sky-100 dark:bg-blue-900 z-0 overflow-hidden">
 
                 <div className="">
                     <CloudAnimation />

@@ -71,7 +71,7 @@ export default function Home() {
     return (
         <div className="font-noticia">
             <NavBar />
-            <main className="relative w-full h-screen bg-gradient-to-b from-sky-300 to-sky-100 dark:bg-blue-900 z-0 overflow-hidden">
+            <main className="relative w-full h-screen bg-linear-to-b from-sky-300 to-sky-100 dark:bg-blue-900 z-0 overflow-hidden">
 
                 <div className="">
                     <CloudAnimation />

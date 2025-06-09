@@ -61,7 +61,7 @@ function ContactSection() {
             />
             <button
               type="submit"
-              className="bg-[#87CE83] hover:bg-[#67B063] border-1 rounded p-2 text-[#051116] font-semibold shadow-[0px_0.5px_0.5px_rgba(16,86,82,0.75),0px_1px_0.5px_rgba(16,86,82,0.75)]"
+              className="bg-[#87CE83] hover:bg-[#67B063] border rounded p-2 text-[#051116] font-semibold shadow-[0px_0.5px_0.5px_rgba(16,86,82,0.75),0px_1px_0.5px_rgba(16,86,82,0.75)]"
             >
               Enviar
             </button>

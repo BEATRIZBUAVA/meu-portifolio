@@ -5,7 +5,7 @@ import React from "react"
 export function Underlay() {
   return (
     <section >
-      <div className="absolute bg-[#7897A6] grid grid-cols-1 w-full h-100vh p-10 justify-center overflow-hidden"
+      <div className="absolute  grid grid-cols-1 w-full h-100vh p-10 justify-center overflow-hidden"
       >
         <div className="col-span-7 bg-amber-50 p-5  border-[#323232] border-2 shadow-[4px_4px_0_0_#323232] rounded-sm text-left sm:w-3/4 lg:w-2/3">
           <h1 className="text-[#051116] mb-4   sm:text-5xl lg:text-6xl !font-noticia">

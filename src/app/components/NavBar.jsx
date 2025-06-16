@@ -29,7 +29,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav className="fixed bottom-0  w-full z-10 dark:bg-[#333] bg-amber-50 font-noticia bg-opacity-100 flex overflow-hidden">
+    <nav className="fixed bottom-0  w-full z-10 dark:bg-[#333] bg-amber-50 font-noticia bg-opacity-100 flex items-center overflow-hidden">
 
 
       <div className="flex  ml-5 pt-2" ref={menuRef}>
@@ -59,8 +59,9 @@ export default function NavBar() {
             </ul>
           </div>
         )}
-        <Clock time={time} />
+
         <ThemeToggle />
+        <Clock time={time} />
       </div>
     </nav>
   );

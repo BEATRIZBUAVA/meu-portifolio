@@ -38,18 +38,24 @@ export default function DesktopWindow({
             <div
                 ref={nodeRef}
                 onMouseDown={handleMouseDown}
+                className={`
+                    absolute
+                    rounded-lg
+                    shadow-lg
+                    select-none
+                    border
+                    border-gray-800
+                    bg-white
+                    dark:bg-zinc-900
+                    text-black
+                    dark:text-white
+  `}
                 style={{
-                    position: "absolute",
                     top: position.y,
                     left: position.x,
-                    width: 1000,
+                    width: 700,
                     height: 600,
-                    backgroundColor: "white",
-                    border: "1px solid #333",
-                    borderRadius: 8,
-                    boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-                    userSelect: "none",
-                    zIndex: zIndex,
+                    zIndex: zIndex
                 }}
             >
                 <div

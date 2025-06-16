@@ -8,6 +8,8 @@ import ProjectSection from "../projectsection/page";
 import EmailSection from "../emailsection/page";
 import FolderIcon from "../components/FolderIcon";
 import DesktopWindow from "../components/DesktopWindow";
+import WindowWrapper from "../components/WindowWrapper";
+
 
 
 export default function Home() {
@@ -71,19 +73,19 @@ export default function Home() {
     return (
         <div className="font-noticia">
             <NavBar />
-            <main className="relative w-full h-screen bg-linear-to-b from-sky-300 to-sky-100 dark:bg-blue-900 z-0 overflow-hidden">
+            <main className="relative w-full h-screen bg-linear-to-b from-sky-600 to-sky-200 dark:bg-linear-to-b dark:from-sky-950 dark:to-sky-800 z-0 overflow-hidden">
 
-                <div className="">
+                <div >
                     <CloudAnimation />
 
                     <Mountain
-                        fill="#81C784"
                         height={160}
                         width={850}
                         left="0"
                         bottom="0"
                         opacity={0.8}
                         zIndex={-10}
+
                     />
                 </div>
 
@@ -91,23 +93,34 @@ export default function Home() {
 
 
                 <div className="flex flex-col h-full w-screen items-start justify-center gap-20 cursor-pointer pt-10 pl-15 transition-all">
-                    <FolderIcon
-                        onClick={() => toggleWindow("whoami")}
-                        className={`z-1 ${openWindows.whoami ? 'opacity-80 scale-95' : ''} transition-all`}
-                    />
-                    <FolderIcon
-                        onClick={() => toggleWindow("projects")}
-                        className={`z-1 ${openWindows.projects ? 'opacity-80 scale-95' : ''} transition-all`}
-                    />
-                    <FolderIcon
-                        onClick={() => toggleWindow("email")}
-                        className={`z-1 ${openWindows.email ? 'opacity-80 scale-95' : ''} transition-all`}
-                    />
+                    <div className="flex flex-col items-center" onClick={() => toggleWindow("whoami")}>
+                        <FolderIcon
+
+                            className={`z-1 ${openWindows.whoami ? 'opacity-80 scale-95' : ''} transition-all`}
+                        />
+                        <span className="text-sm text-foreground mt-2 dark:text-bakcground">Quem sou eu</span>
+                    </div>
+                    <div className="flex flex-col items-center" onClick={() => toggleWindow("projects")}>
+                        <FolderIcon
+
+                            className={`z-1 ${openWindows.projects ? 'opacity-80 scale-95' : ''} transition-all`}
+                        />
+                        <span className="text-sm text-foreground mt-2 dark:text-bakcground">Projetos</span>
+                    </div>
+                    <div className="flex flex-col items-center" onClick={() => toggleWindow("email")}>
+                        <FolderIcon
+
+                            className={`z-1 ${openWindows.email ? 'opacity-80 scale-95' : ''} transition-all`}
+                        />
+                        <span className="text-sm text-foreground mt-2 dark:text-bakcground">Contato</span>
+                    </div>
+
                 </div>
+
 
                 {/* Renderizar janela WhoAmI se estiver aberta */}
                 {openWindows.whoami && (
-                    <DesktopWindow
+                    <WindowWrapper
                         onClose={() => closeWindow("whoami")}
                         onFocus={() => focusWindow("whoami")}
                         offsetIndex={0}
@@ -115,12 +128,12 @@ export default function Home() {
                         zIndex={windowZIndex.whoami}
                     >
                         <WhoAmI />
-                    </DesktopWindow>
+                    </WindowWrapper>
                 )}
 
                 {/* Renderizar janela Projects se estiver aberta */}
                 {openWindows.projects && (
-                    <DesktopWindow
+                    <WindowWrapper
                         onClose={() => closeWindow("projects")}
                         onFocus={() => focusWindow("projects")}
                         offsetIndex={1}
@@ -128,12 +141,12 @@ export default function Home() {
                         zIndex={windowZIndex.projects}
                     >
                         <ProjectSection />
-                    </DesktopWindow>
+                    </WindowWrapper>
                 )}
 
                 {/* Renderizar janela Email se estiver aberta */}
                 {openWindows.email && (
-                    <DesktopWindow
+                    <WindowWrapper
                         onClose={() => closeWindow("email")}
                         onFocus={() => focusWindow("email")}
                         offsetIndex={2}
@@ -141,7 +154,7 @@ export default function Home() {
                         zIndex={windowZIndex.email}
                     >
                         <EmailSection />
-                    </DesktopWindow>
+                    </WindowWrapper>
                 )}
             </main>
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export default function Clock() {
-    const [time, setTime] = useState('');
+  const [time, setTime] = useState('');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -19,5 +19,5 @@ export default function Clock() {
 
   if (!mounted) return null; // Nada é renderizado no SSR
 
-  return <span className='text-gray-700 text-lg'>{time}</span>;
+  return <span className="text-gray-700 text-lg pt-2 px-3 ml-96 dark:text-white">{time}</span>;
 }

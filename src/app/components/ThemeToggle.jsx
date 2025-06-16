@@ -22,10 +22,10 @@ export default function ThemeToggle() {
         <button
             onClick={toggleTheme}
             className="
-        p-2 ml-2 rounded-lg transition-all duration-200 
-        bg-gray-200 hover:bg-gray-300 
-        dark:bg-gray-700 dark:hover:bg-gray-600
-        text-gray-800 dark:text-gray-200
+        p-2 ml-5 w-10 h-10 flex items-center justify-center rounded-full transition-all duration-200 
+        dark:bg-gray-200 dark:hover:bg-gray-300 
+        bg-gray-900 hover:bg-gray-600
+        dark:text-gray-800 text-gray-200
         hover:scale-105 active:scale-95
       "
             aria-label="Toggle theme"

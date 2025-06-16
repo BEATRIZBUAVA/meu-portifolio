@@ -10,6 +10,7 @@ function SVGCloud({ top, size, duration, opacity }) {
                 height: `${(size * 40) / 64}px`,
                 opacity,
                 animationDuration: duration,
+                zIndex: -1
             }}
             viewBox="0 0 64 40"
             xmlns="http://www.w3.org/2000/svg"

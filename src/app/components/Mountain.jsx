@@ -1,7 +1,7 @@
 import React from "react";
 
 function Mountain({
-    fill = "#4CAF50",
+
     height = 600,
     width = 800,
     bottom = "0px",
@@ -17,10 +17,15 @@ function Mountain({
             preserveAspectRatio="none"
         >
             <defs>
-                <linearGradient id="mountainGradient" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#216105" />
-                    <stop offset="20%" stopColor="#47a71c" />
-                    <stop offset="100%" stopColor="#216105" />
+                <linearGradient id="mountainGradient-light" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="oklch(53.2% 0.157 131.589)" />
+                    <stop offset="40%" stopColor="oklch(64.8% 0.2 131.684)" />
+                    <stop offset="100%" stopColor="oklch(53.2% 0.157 131.589)" />
+                </linearGradient>
+                <linearGradient id="mountainGradient-dark" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="oklch(27.4% 0.072 132.109)" />
+                    <stop offset="20%" stopColor="oklch(40.5% 0.101 131.063)" />
+                    <stop offset="100%" stopColor="oklch(27.4% 0.072 132.109)" />
                 </linearGradient>
             </defs>
             <path
@@ -29,7 +34,18 @@ function Mountain({
                    L800,900 
                    L0,900 
                     Z"
-                fill="url(#mountainGradient)"
+                fill="url(#mountainGradient-light)"
+                className="block dark:hidden"
+
+            />
+            <path
+                d="M0,400 
+                   Q200,100 800,600 
+                   L800,900 
+                   L0,900 
+                    Z"
+                fill="url(#mountainGradient-dark)"
+                className="hidden dark:block"
             />
         </svg>
     );

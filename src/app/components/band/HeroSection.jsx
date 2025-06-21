@@ -8,7 +8,7 @@ import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphe
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
 
 extend({ MeshLineGeometry, MeshLineMaterial })
-const GLTF_PATH = '/assets/card.glb';
+const GLTF_PATH = '/assets/untitled.glb';
 const TEXTURE_PATH = '/assets/textura-azul.png';
 
 

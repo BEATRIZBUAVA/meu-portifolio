@@ -35,7 +35,7 @@ function ContactSection() {
 
       <div className="flex flex-col items-center justify-center  ">
 
-        <div className="flex flex-col items-center justify-center w-150 h-150 bg-lime-200 dark:bg-lime-900 border-2 border-black shadow-[4px_4px_0_black]  dark:shadow-[4px_4px_0_white] rounded-[10px] mt-10">
+        <div className="flex flex-col items-center justify-center w-150 h-120 bg-lime-200 dark:bg-lime-900 border-2 border-black shadow-[4px_4px_0_black]  dark:shadow-[4px_4px_0_white] rounded-[10px] mt-10">
           <h2 className="text-3xl text-bold text-center text-[#051116] dark:text-amber-50 pb-10 ">Contato</h2>
           <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4  w-full max-w-md sm:max-w-lg text-[#051116]">
             <input

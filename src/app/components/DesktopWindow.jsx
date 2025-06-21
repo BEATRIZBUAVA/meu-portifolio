@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 
 export default function DesktopWindow({
@@ -11,26 +11,41 @@ export default function DesktopWindow({
 }) {
     const nodeRef = useRef(null);
 
-    // Calcular posição imediatamente, sem useState
-    const windowWidth = 1000;
-    const windowHeight = 600;
+    const [windowSize, setWindowSize] = useState({
+        width: 800,
+        height: 600,
+        x: 100,
+        y: 100
+    });
 
-    const centerX = (window.innerWidth - windowWidth) / 2;
-    const centerY = (window.innerHeight - windowHeight) / 2;
+    useEffect(() => {
+        function updateSize() {
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
 
-    // Adicionar offset baseado no índice para evitar sobreposição
-    const offset = offsetIndex * 40;
+            const width = Math.min(Math.max(vw * 0.7, 300), 1000); // largura entre 300 e 1000
+            const height = Math.min(Math.max(vh * 0.7, 300), 700); // altura entre 300 e 700
 
-    const position = {
-        x: centerX + offset,
-        y: centerY + offset
-    };
+            const centerX = (vw - width) / 2;
+            const centerY = (vh - height) / 2;
 
-    // Função para focar janela quando clicada
-    const handleMouseDown = () => {
-        if (onFocus) {
-            onFocus();
+            const offset = offsetIndex * 40;
+
+            setWindowSize({
+                width,
+                height,
+                x: centerX + offset,
+                y: centerY + offset
+            });
         }
+
+        updateSize();
+        window.addEventListener("resize", updateSize);
+        return () => window.removeEventListener("resize", updateSize);
+    }, [offsetIndex]);
+
+    const handleMouseDown = () => {
+        if (onFocus) onFocus();
     };
 
     return (
@@ -39,22 +54,14 @@ export default function DesktopWindow({
                 ref={nodeRef}
                 onMouseDown={handleMouseDown}
                 className={`
-                    absolute
-                    rounded-lg
-                    shadow-lg
-                    select-none
-                    border
-                    border-gray-800
-                    bg-white
-                    dark:bg-zinc-900
-                    text-black
-                    dark:text-white
-  `}
+                    absolute rounded-lg shadow-lg select-none border
+                    border-gray-800 bg-amber-50 dark:bg-zinc-900 text-black dark:text-white
+                `}
                 style={{
-                    top: position.y,
-                    left: position.x,
-                    width: 700,
-                    height: 600,
+                    top: windowSize.y,
+                    left: windowSize.x,
+                    width: windowSize.width,
+                    height: windowSize.height,
                     zIndex: zIndex
                 }}
             >
@@ -72,7 +79,7 @@ export default function DesktopWindow({
                         userSelect: "none",
                         padding: "8px 12px",
                         height: "40px",
-                        boxSizing: "border-box",
+                        boxSizing: "border-box"
                     }}
                 >
                     <span>{title}</span>
@@ -84,17 +91,19 @@ export default function DesktopWindow({
                             color: "white",
                             fontSize: 18,
                             cursor: "pointer",
-                            padding: "0 4px",
+                            padding: "0 4px"
                         }}
                     >
                         ✕
                     </button>
                 </div>
-                <div style={{
-                    height: "calc(100% - 40px)",
-                    overflow: "auto",
-                    boxSizing: "border-box"
-                }}>
+                <div
+                    style={{
+                        height: "calc(100% - 40px)",
+                        overflow: "auto",
+                        boxSizing: "border-box"
+                    }}
+                >
                     {children}
                 </div>
             </div>

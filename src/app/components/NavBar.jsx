@@ -33,9 +33,7 @@ export default function NavBar() {
 
 
       <div className="flex  ml-5 pt-2" ref={menuRef}>
-        <Link href="/whoami" className="w-10 h-10 rounded-full border-3 border-black flex items-center justify-center text-lg font-bold ">
-          b.
-        </Link>
+
 
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -45,7 +43,7 @@ export default function NavBar() {
         </button>
 
         {isOpen && (
-          <div className="absolute top-full left-4 mt-2 p-3 rounded-lg bg-white shadow-md border">
+          <div className="absolute bottom-full left-4 mb-2 p-3 rounded-lg bg-white shadow-md border">
             <ul className="space-y-2">
               <li>
                 <Link href="/aboutsection" onClick={() => setIsOpen(false)}>Sobre mim</Link>

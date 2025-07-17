@@ -15,7 +15,7 @@ export default function MobileModal({ children, onClose, title = "Janela" }) {
                 overflowY: "auto",
             }}
         >
-            <div className="flex items-center justify-between p-4 border-b border-gray-300">
+            <div className="flex items-center justify-between p-4 border-b bg-zinc-700 text-white border-gray-300">
                 <span className="font-medium">{title}</span>
                 <button onClick={onClose} className="text-gray-500 text-xl font-bold">
                     ×

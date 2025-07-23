@@ -13,7 +13,7 @@ export default function DesktopWindow({
 
     const [windowSize, setWindowSize] = useState({
         width: 800,
-        height: 600,
+        height: 800,
         x: 100,
         y: 100
     });
@@ -22,9 +22,10 @@ export default function DesktopWindow({
         function updateSize() {
             const vw = window.innerWidth;
             const vh = window.innerHeight;
+            console.log("Altura da janela:", vh);
 
             const width = Math.min(Math.max(vw * 0.7, 300), 1000); // largura entre 300 e 1000
-            const height = Math.min(Math.max(vh * 0.7, 300), 700); // altura entre 300 e 700
+            const height = Math.min(Math.max(vh * 0.8, 300), 1200); // altura entre 300 e 700
 
             const centerX = (vw - width) / 2;
             const centerY = (vh - height) / 2;
@@ -55,7 +56,7 @@ export default function DesktopWindow({
                 onMouseDown={handleMouseDown}
                 className={`
                     absolute rounded-lg shadow-lg select-none border
-                    border-gray-800 bg-amber-50 dark:bg-zinc-900 text-black dark:text-white
+                    border-gray-800 bg-neutral-50 dark:bg-zinc-900 text-gray-900 dark:text-white
                 `}
                 style={{
                     top: windowSize.y,

@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import ProjectCard from "../components/ProjectCard";
 import ProjectTag from "../components/ProjectTag";
 import { motion, useInView } from "framer-motion";
-import NavBar from "../components/NavBar";
+
 
 const projectsData = [
   {
@@ -43,24 +43,7 @@ const projectsData = [
     gitUrl: "/",
     previewUrl: "/",
   },
-  {
-    id: 5,
-    title: "React Firebase Template",
-    description: "Authentication and CRUD operations",
-    image: "/images/projects/5.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
-  {
-    id: 6,
-    title: "Full-stack Roadmap",
-    description: "Project 6 description",
-    image: "/images/projects/6.png",
-    tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
-  },
+
 ];
 
 export default function ProjectsSection() {
@@ -85,10 +68,11 @@ export default function ProjectsSection() {
     <section id="projects" className=" w-full min-h-screen"
     >
 
-      <h2 className="text-center text-4xl font-bold text-white pt-20 mb-8 md:mb-12">
-        My Projects
+      <h2 className="text-center text-4xl font-bold text-gray-700 pt-20 mb-8 md:mb-12">
+        Meus Projetos
       </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2  flex-wrap">
+
+      <div className="text-gray-700 flex flex-row justify-center items-cen gap-2  flex-wrap">
         <ProjectTag
           onClick={handleTagChange}
           name="All"
@@ -107,7 +91,7 @@ export default function ProjectsSection() {
       </div>
       <ul
         ref={ref}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 p-10"
+        className="flex flex-col gap-8 p-10"
       >
         {filteredProjects.map((project, index) => (
           <motion.li

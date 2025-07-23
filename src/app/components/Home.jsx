@@ -7,7 +7,6 @@ import WhoAmI from "../whoami/page";
 import ProjectSection from "../projectsection/page";
 import EmailSection from "../emailsection/page";
 import FolderIcon from "../components/FolderIcon";
-import DesktopWindow from "../components/DesktopWindow";
 import WindowWrapper from "../components/WindowWrapper";
 
 

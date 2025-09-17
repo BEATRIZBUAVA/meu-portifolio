@@ -13,14 +13,22 @@ const TEXTURE_PATH = '/assets/textura-azul.png';
 
 
 export default function HeroSection() {
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile(); // verifica ao montar
+    window.addEventListener('resize', checkMobile); // atualiza ao redimensionar
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   return (
-    <div className="responsive-wrapper w-100% h-full overflow-hidden">
-      <Canvas camera={{ position: [0, 0, 13], fov: 25 }} style={{
-        width: '100%',
-        height: '100%',
-        display: 'block'
-      }}
+    <div className="responsive-wrapper w-full h-full overflow-hidden">
+      <Canvas camera={{ position: [0, isMobile ? 0.5 : 0.5, 10], fov: 30 }}
+        style={{ width: '100%', height: '100%', display: 'block' }}
       >
         <ambientLight intensity={Math.PI} />
         <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
@@ -48,6 +56,9 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]))
   const [dragged, drag] = useState(false)
   const [hovered, hover] = useState(false)
+  const { size } = useThree() // pega a largura da tela
+  const isMobile = size.width < 768 // ou outro breakpoint que desejar
+
 
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]) // prettier-ignore
@@ -94,7 +105,8 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 
   return (
     <>
-      <group position={[-3, 5, 0]}>
+      <group position={isMobile ? [0, 4.55, 2] : [0, 4.5, 2]}>
+
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />
@@ -108,8 +120,8 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
         <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
-            scale={2.25}
-            position={[0, -1.2, 0]}
+            scale={isMobile ? 1.8 : 2.25}
+            position={isMobile ? [0, -0.74, 0] : [0, -1.2, 0]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e) => (e.target.releasePointerCapture(e.pointerId), drag(false))}

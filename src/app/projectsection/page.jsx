@@ -65,34 +65,36 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className=" w-full min-h-screen"
+    <section
+      id="projects"
+      className="w-full min-h-screen "
     >
-
-      <h2 className="text-center text-4xl font-bold text-gray-700 pt-20 mb-8 md:mb-12">
+      <h2 className="text-center text-4xl text-gray-800 pt-20 mb-8 md:mb-12">
         Meus Projetos
       </h2>
 
-      <div className="text-gray-700 flex flex-row justify-center items-cen gap-2  flex-wrap">
+      <div className="text-gray-800 flex flex-row justify-center items-center gap-2 flex-wrap mb-6">
         <ProjectTag
           onClick={handleTagChange}
           name="All"
           isSelected={tag === "All"}
+          className="px-4 py-1 bg-gray-100 border border-gray-400 rounded-sm shadow-[inset_1px_1px_0px_white] hover:bg-gray-200 active:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.2)]"
         />
         <ProjectTag
           onClick={handleTagChange}
           name="Web"
           isSelected={tag === "Web"}
+          className="px-4 py-1 bg-gray-100 border border-gray-400 rounded-sm shadow-[inset_1px_1px_0px_white] hover:bg-gray-200 active:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.2)]"
         />
         <ProjectTag
           onClick={handleTagChange}
           name="Mobile"
           isSelected={tag === "Mobile"}
+          className="px-4 py-1 bg-gray-100 border border-gray-400 rounded-sm shadow-[inset_1px_1px_0px_white] hover:bg-gray-200 active:shadow-[inset_2px_2px_4px_rgba(0,0,0,0.2)]"
         />
       </div>
-      <ul
-        ref={ref}
-        className="flex flex-col gap-8 p-10"
-      >
+
+      <ul ref={ref} className="flex flex-col gap-8 p-10">
         {filteredProjects.map((project, index) => (
           <motion.li
             key={project.id}
@@ -100,6 +102,7 @@ export default function ProjectsSection() {
             initial="initial"
             animate={isInView ? "animate" : "initial"}
             transition={{ duration: 0.3, delay: index * 0.2 }}
+            className="bg-gray-100 border-2 border-gray-300 rounded-md shadow-[2px_2px_4px_rgba(0,0,0,0.4)] [border-style:inset]"
           >
             <ProjectCard
               title={project.title}
@@ -112,5 +115,6 @@ export default function ProjectsSection() {
         ))}
       </ul>
     </section>
+
   );
 }

@@ -8,10 +8,12 @@ import ProjectSection from "../projectsection/page";
 import EmailSection from "../emailsection/page";
 import FolderIcon from "../components/FolderIcon";
 import WindowWrapper from "../components/WindowWrapper";
+import { useSound } from './SoundControl';
 
 
 
 export default function Home() {
+    const { playSound } = useSound();
     // Estado para controlar quais janelas estão abertas
     const [openWindows, setOpenWindows] = useState({
         whoami: false,
@@ -92,21 +94,21 @@ export default function Home() {
 
 
                 <div className="flex flex-col h-full w-screen items-start justify-center gap-20 cursor-pointer pt-10 pl-15 transition-all">
-                    <div className="flex flex-col items-center" onClick={() => toggleWindow("whoami")}>
+                    <div className="flex flex-col items-center" onClick={() => { toggleWindow("whoami"); playSound('click'); }}>
                         <FolderIcon
 
                             className={`z-1 ${openWindows.whoami ? 'opacity-80 scale-95' : ''} transition-all`}
                         />
                         <span className="text-sm text-foreground mt-2 dark:text-bakcground">Quem sou eu</span>
                     </div>
-                    <div className="flex flex-col items-center" onClick={() => toggleWindow("projects")}>
+                    <div className="flex flex-col items-center" onClick={() => { toggleWindow("projects"); playSound('click'); }}>
                         <FolderIcon
 
                             className={`z-1 ${openWindows.projects ? 'opacity-80 scale-95' : ''} transition-all`}
                         />
                         <span className="text-sm text-foreground mt-2 dark:text-bakcground">Projetos</span>
                     </div>
-                    <div className="flex flex-col items-center" onClick={() => toggleWindow("email")}>
+                    <div className="flex flex-col items-center" onClick={() => { toggleWindow("email"); playSound('click'); }}>
                         <FolderIcon
 
                             className={`z-1 ${openWindows.email ? 'opacity-80 scale-95' : ''} transition-all`}

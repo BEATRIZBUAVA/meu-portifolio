@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
+import { useSound } from './SoundControl';
 
 export default function DesktopWindow({
     onClose,
@@ -9,6 +10,7 @@ export default function DesktopWindow({
     zIndex = 1000,
     onFocus
 }) {
+    const { playSound } = useSound();
     const nodeRef = useRef(null);
 
     const [windowSize, setWindowSize] = useState({
@@ -56,7 +58,7 @@ export default function DesktopWindow({
                 onMouseDown={handleMouseDown}
                 className={`
                     absolute rounded-lg shadow-lg select-none border
-                    border-gray-800 bg-neutral-50 dark:bg-zinc-900 text-gray-900 dark:text-white
+                    border-gray-800 bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white
                 `}
                 style={{
                     top: windowSize.y,
@@ -85,7 +87,10 @@ export default function DesktopWindow({
                 >
                     <span>{title}</span>
                     <button
-                        onClick={onClose}
+                        onClick={() => {
+                            playSound('close');
+                            onClose();
+                        }}
                         style={{
                             background: "transparent",
                             border: "none",

@@ -15,14 +15,13 @@
     "@fortawesome/react-fontawesome": "^0.2.3",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-tooltip": "^1.2.0",
-    "@react-three/drei": "^9.112.0",
+    "@react-three/drei": "^10.0.0",
     "@react-three/fiber": "^9.1.1",
     "@react-three/rapier": "^1.4.0",
     "autoprefixer": "^10.4.21",
     "emailjs-com": "^3.2.0",
     "fontawesome": "^5.6.3",
-    "framer-motion": "^10.16.4",
-    "framer-motion-3d": "^10.16.4",
+    "framer-motion": "^11.18.2",
     "heroicons": "^2.2.0",
     "leva": "^0.9.35",
     "meshline": "3.2.0",
@@ -36,7 +35,7 @@
     "react-draggable": "^4.4.6",
     "react-type-animation": "^3.2.0",
     "tailwind": "^4.0.0",
-    "three": "0.157.0"
+    "three": "0.170.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

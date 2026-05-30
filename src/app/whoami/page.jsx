@@ -1,3 +1,4 @@
+"use client";
 import HeroSection from "../components/whoami/band/HeroSection";
 import React, { useState } from "react";
 import { CardBonita } from "../components/whoami/CardBonita";

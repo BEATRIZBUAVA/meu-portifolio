@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import DesktopWindow from "./DesktopWindow";
 import MobileModal from "./MobileModal"; // Crie esse componente (veja mais abaixo)
 
